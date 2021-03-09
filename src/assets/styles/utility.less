@@ -1,0 +1,42 @@
+// @import "swiper/css/swiper.css";
+
+/*vm兼容处理使用Viewport Units Buggyfill造成的副作用，需要如下设置img*/
+img {
+	content: normal !important;
+}
+
+[hidden] {
+	visibility: hidden !important;
+}
+
+[class$='-layout'] {
+	position: absolute;
+
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+
+	overflow: scroll;
+}
+
+img[lazy='loading'] {
+	animation-duration: 1.25s;
+	animation-fill-mode: forwards;
+	animation-iteration-count: infinite;
+	animation-name: placeHolderShimmer;
+	animation-timing-function: linear;
+	background: #F6F6F6;
+	background: linear-gradient(to right, #F6F6F6 8%, #F0F0F0 18%, #F6F6F6 33%);
+	background-size: 800px 104px;
+	position: relative;
+
+	&.icon {
+		background: transparent;
+		animation: none;
+	}
+}
+
+.swiper-slide {
+	background: #ffffff;
+}

@@ -1,0 +1,21 @@
+{
+    "plugins": [
+        [
+            "import",
+            {
+                "libraryName": "ant-design-vue",
+                "libraryDirectory": "es",
+                "style": "css"
+            },
+            "antd"
+        ],
+        ["import", 
+            {
+                "libraryName": "muse-ui",
+                "libraryDirectory": "lib",
+                "camel2DashComponentName": false
+            },
+            "muse"
+        ]
+    ]
+}
