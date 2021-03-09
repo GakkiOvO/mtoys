@@ -1,17 +1,6 @@
 <template>
   <div id="app">
     <NavTop />
-    <div>
-      mobile
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-    </div>
     <!-- <router-view /> -->
     <NavBottom />
     <!-- <Myslide /> -->
