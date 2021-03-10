@@ -47,13 +47,13 @@ export default {
 
 <style lang="less" scoped>
 #Profiles {
-  // margin-top: 136px;
+  padding-top: 136px;
   font-family: ArialMT;
   font-size: 26px;
   font-weight: normal;
   color: #1d1d1f;
   .title {
-    margin: 189px 0 95px;
+    margin: 0 0 95px;
     color: #1d1d1f;
     font-size: 56px;
     font-weight: 900;
@@ -76,6 +76,11 @@ export default {
       display: flex;
       flex-direction: column;
       align-items: center;
+      .group {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
       .ce {
         text-align: center;
         > div {

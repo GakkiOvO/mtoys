@@ -87,7 +87,8 @@ export default {
 
 <style lang="less" scoped>
 #Contact {
-  margin: 192px 0;
+  // margin: 192px 0;
+  padding: 136px 0 188px;
   font-family: ArialMT;
   font-size: 24px;
   font-weight: normal;

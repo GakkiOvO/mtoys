@@ -18,8 +18,8 @@
             HOME
           </div> -->
           <div
-            :class="['name', { click: selectType === 'products' }]"
-            @click.stop="select('products')"
+            :class="['name', { click: selectType === 'product' }]"
+            @click.stop="select('product')"
           >
             PRODUCTS
             <div class="group">
@@ -35,15 +35,15 @@
           </div>
           <div class="underline"></div>
           <div
-            :class="['name', { click: selectType === 'profiles' }]"
-            @click.stop="select('profiles')"
+            :class="['name', { click: selectType === 'Profiles' }]"
+            @click.stop="select('Profiles')"
           >
             PROFILES
           </div>
           <div class="underline"></div>
           <div
-            :class="['name', { click: selectType === 'contact' }]"
-            @click.stop="select('contact')"
+            :class="['name', { click: selectType === 'Contact' }]"
+            @click.stop="select('Contact')"
           >
             CONTACT US
           </div>
@@ -103,11 +103,13 @@ export default {
     },
     select(type) {
       this.selectType = type
-      if (this.$router.history.current.name != type) {
-        this.$router.push({
-          name: type,
-        })
-      }
+      this.open = false
+      document.getElementById(type).scrollIntoView({ block: 'start', behavior: 'smooth' })
+      // if (this.$router.history.current.name != type) {
+      //   this.$router.push({
+      //     name: type,
+      //   })
+      // }
     },
   },
 }

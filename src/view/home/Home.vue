@@ -3,7 +3,7 @@
     <section class="swiper">
       <Homeslide ref="child" />
     </section>
-    <section class="product">
+    <section id="product" class="product">
       <div class="title bottom">
         PRODUCT
         <p>CATEGORY</p>
@@ -13,29 +13,30 @@
           <div
             v-for="(porduct, i) in records_her"
             :key="'i1' + i"
+            class="porduct"
             @click="getDetail(porduct.productId)"
           >
-            <img :src="porduct.img" />
+            <img class="porduct-img" :src="porduct.img" />
             <div class="name">{{ porduct.name }}</div>
             <div class="more" @click.stop="getDetail(porduct.productId)">VIEW MORE >></div>
           </div>
-        </div>
-        <div class="her">
-          <img src="@/assets/image/home/img_her.webp" />
-          <div style="position: absolute; bottom: 35px">
-            <div class="alt">FOR HER</div>
+          <div class="her">
+            <img src="@/assets/image/home/img_her.webp" />
+            <div style="position: absolute; bottom: 35px">
+              <div class="alt">FOR HER</div>
+            </div>
           </div>
         </div>
       </div>
       <div class="context">
-        <div class="her">
-          <img src="@/assets/image/home/img_him.webp" />
-          <div style="position: absolute; bottom: 35px">
-            <div class="alt">FOR HIM</div>
-          </div>
-        </div>
         <div class="item">
-          <div v-for="(porduct, i) in records_him" :key="'i2' + i">
+          <div class="her">
+            <img src="@/assets/image/home/img_him.webp" />
+            <div style="position: absolute; bottom: 35px">
+              <div class="alt">FOR HIM</div>
+            </div>
+          </div>
+          <div v-for="(porduct, i) in records_him" :key="'i2' + i" class="porduct">
             <img :src="porduct.img" />
             <div class="name">{{ porduct.name }}</div>
             <div class="more" @click="getDetail(porduct.productId)">VIEW MORE >></div>
@@ -271,7 +272,7 @@ export default {
 
 <style scoped lang="less">
 #Home {
-  margin-top: 136px;
+  padding-top: 136px;
   input {
     padding: 0 8px 8px 8px;
     border: 0;
@@ -291,21 +292,21 @@ export default {
     font-size: 18px;
     width: 100%;
   }
-  .swiper {
-    padding-bottom: 181px;
-    // //width: 1200px;
-    margin: auto;
-  }
+  // .swiper {
+  //   padding-bottom: 181px;
+  //   width: 1200px;
+  //   margin: auto;
+  // }
   .title {
     margin: 0 auto 119px;
     text-align: center;
     width: 774px;
     font-family: ArialMT;
-    font-size: 64px;
+    font-size: 61px;
     font-weight: 900;
     color: #1d1d1f;
     > p {
-      font-size: 40px;
+      font-size: 38px;
     }
     &.bottom {
       margin: 0 auto 59px;
@@ -313,33 +314,40 @@ export default {
   }
   .product {
     //width: 1200px;
-    margin: auto;
+    padding-top: 136px;
     display: flex;
     flex-direction: column;
 
     .context {
       margin-bottom: 120px;
+      &:last-child {
+        margin-bottom: 0;
+      }
       display: flex;
       justify-content: space-between;
       .item {
         display: grid;
+        justify-content: space-between;
         grid-template-columns: auto auto;
         grid-template-rows: auto auto;
-        grid-gap: 16px 6px;
-        > div {
-          width: 280px;
+        grid-gap: 16px 26px;
+        width: 100%;
+        .porduct {
+          width: 385px;
+          height: 590px;
           text-align: center;
           // &:hover {
           //   border: 1px solid#ff4f8d;
           // }
-          img {
-            height: 263px;
+          .porduct-img {
+            width: 384px;
+            height: 420px;
             object-fit: contain;
           }
           .name {
-            margin-bottom: 10px;
+            margin: 10px 0;
             font-family: ArialMT;
-            font-size: 18px;
+            font-size: 27px;
             font-weight: normal;
             color: #1d1d1f;
           }
@@ -348,7 +356,8 @@ export default {
       .her {
         position: relative;
         > img {
-          height: 656px;
+          width: 338px;
+          height: 590px;
         }
         .alt {
           position: relative;
@@ -361,16 +370,16 @@ export default {
         }
       }
       .more {
-        margin: auto;
+        margin: 24px auto 0;
         cursor: pointer;
         border-radius: 20px;
         border: solid 1px #413328;
-        width: 128px;
-        height: 20px;
-        line-height: 20px;
+        width: 253px;
+        height: 40px;
+        line-height: 40px;
         text-align: center;
         font-family: ArialMT;
-        font-size: 12px;
+        font-size: 18px;
         font-weight: normal;
         color: #5e5e60;
         &.her {
