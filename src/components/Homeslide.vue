@@ -5,8 +5,8 @@
       class="no-shadow"
       :touchable="false"
       autoplay
+      bullets-outside
       :arrows="false"
-      fixed-height="634px"
       @slide="$refs.vueperslides1.goToSlide($event.currentSlide.index, { emit: false })"
     >
       <vueper-slide v-for="(slide, i) in slides" :key="i" :image="slide.image"> </vueper-slide>
@@ -50,11 +50,25 @@ export default {
 <style lang="less" scoped>
 #Myslide {
   position: relative;
+  // margin-top: 136px;
   z-index: 0;
   .thumbnails {
     margin: auto;
     width: 100%;
     max-width: 300px;
+  }
+  // .vueperslides {
+  //   height: 512px;
+  // }
+  // .vueperslides__bullets {
+  //   bottom: -11px;
+  // }
+  /deep/.vueperslides__bullet--active .default {
+    background-color: #ff4f8d;
+  }
+  /deep/.vueperslides__bullet .default {
+    border: 1px solid #ff4f8d;
+    box-shadow: none;
   }
   .vueperslides--fixed-height.vueperslides--bullets-outside {
     margin-bottom: 0;
@@ -131,13 +145,14 @@ export default {
   .shadow {
     width: 100%;
     position: absolute;
-    bottom: 0;
+    bottom: 53px;
     z-index: 1;
+    // height: 512px;
   }
   .view {
     position: absolute;
-    left: 399px;
-    bottom: 92px;
+    left: 32px;
+    bottom: 56px;
     z-index: 1;
     .group {
       position: relative;

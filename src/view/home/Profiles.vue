@@ -47,7 +47,7 @@ export default {
 
 <style lang="less" scoped>
 #Profiles {
-  margin-top: 136px;
+  // margin-top: 136px;
   font-family: ArialMT;
   font-size: 26px;
   font-weight: normal;

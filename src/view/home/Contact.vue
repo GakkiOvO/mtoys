@@ -24,10 +24,20 @@
         <div class="submit">
           <div class="flex">
             <div class="field">Your email:</div>
-            <input v-model="user.email" type="text" @focus="pause" @blur="resume" />
+            <input
+              v-model="user.email"
+              type="text"
+              @focus="$emit('pauses')"
+              @blur="$emit('resumes')"
+            />
           </div>
           <div class="field message">Message:</div>
-          <textarea v-model="user.message" type="text" @focus="pause" @blur="resume" />
+          <textarea
+            v-model="user.message"
+            type="text"
+            @focus="$emit('pause')"
+            @blur="$emit('resume')"
+          />
           <div class="button" @click.stop="ContactUs()"><div>SUBMIT</div></div>
         </div>
       </div>
@@ -66,10 +76,10 @@ export default {
       }
     },
     pause() {
-      // this.$refs.child.pause()
+      this.$refs.child.pause()
     },
     resume() {
-      // this.$refs.child.resume()
+      this.$refs.child.resume()
     },
   },
 }

@@ -1,9 +1,9 @@
 <template>
   <div id="Home">
-    <!-- <section class="swiper">
+    <section class="swiper">
       <Homeslide ref="child" />
-    </section> -->
-    <!-- <section class="product">
+    </section>
+    <section class="product">
       <div class="title bottom">
         PRODUCT
         <p>CATEGORY</p>
@@ -42,9 +42,9 @@
           </div>
         </div>
       </div>
-    </section> -->
+    </section>
     <Profile />
-    <Contact />
+    <Contact @pauses="pause" @resumes="resume" />
     <!-- <section class="profile">
       <div class="title">PROFILE</div>
       <div class="context">
@@ -107,7 +107,7 @@
 </template>
 
 <script>
-// import Homeslide from '@/components/Homeslide'
+import Homeslide from '@/components/Homeslide'
 import Popup from '@/components/Popup'
 // import apis from '@/network/orderApi'
 import Profile from './Profiles'
@@ -115,7 +115,7 @@ import Contact from './Contact'
 export default {
   name: 'Confirmation',
   components: {
-    // Homeslide,
+    Homeslide,
     Popup,
     Profile,
     Contact,
@@ -143,21 +143,21 @@ export default {
           name: 'A00001-0054',
           productId: '0054',
         },
-        {
-          img: 'https://lovetoys-imgs.s3.us-east-2.amazonaws.com/lovetoys2/0532/0532-1.webp',
-          name: 'A00001-0532',
-          productId: '0532',
-        },
-        {
-          img: 'https://lovetoys-imgs.s3.us-east-2.amazonaws.com/lovetoys2/0165/0165-1.webp',
-          name: 'A00001-0165',
-          productId: '0165',
-        },
-        {
-          img: 'https://lovetoys-imgs.s3.us-east-2.amazonaws.com/lovetoys2/0164/0164-1.webp',
-          name: 'A00001-0164',
-          productId: '0164',
-        },
+        // {
+        //   img: 'https://lovetoys-imgs.s3.us-east-2.amazonaws.com/lovetoys2/0532/0532-1.webp',
+        //   name: 'A00001-0532',
+        //   productId: '0532',
+        // },
+        // {
+        //   img: 'https://lovetoys-imgs.s3.us-east-2.amazonaws.com/lovetoys2/0165/0165-1.webp',
+        //   name: 'A00001-0165',
+        //   productId: '0165',
+        // },
+        // {
+        //   img: 'https://lovetoys-imgs.s3.us-east-2.amazonaws.com/lovetoys2/0164/0164-1.webp',
+        //   name: 'A00001-0164',
+        //   productId: '0164',
+        // },
       ],
       records_him: [
         {
@@ -175,21 +175,21 @@ export default {
           name: 'A00001-0413',
           productId: '0413',
         },
-        {
-          img: 'https://lovetoys-imgs.s3.us-east-2.amazonaws.com/lovetoys2/0415/0415-1.webp',
-          name: 'A00001-0415',
-          productId: '0415',
-        },
-        {
-          img: 'https://lovetoys-imgs.s3.us-east-2.amazonaws.com/lovetoys2/0616/0616-1.webp',
-          name: 'A00001-0616',
-          productId: '0616',
-        },
-        {
-          img: 'https://lovetoys-imgs.s3.us-east-2.amazonaws.com/lovetoys2/0070/0070-1.webp',
-          name: 'A00001-0070',
-          productId: '0070',
-        },
+        // {
+        //   img: 'https://lovetoys-imgs.s3.us-east-2.amazonaws.com/lovetoys2/0415/0415-1.webp',
+        //   name: 'A00001-0415',
+        //   productId: '0415',
+        // },
+        // {
+        //   img: 'https://lovetoys-imgs.s3.us-east-2.amazonaws.com/lovetoys2/0616/0616-1.webp',
+        //   name: 'A00001-0616',
+        //   productId: '0616',
+        // },
+        // {
+        //   img: 'https://lovetoys-imgs.s3.us-east-2.amazonaws.com/lovetoys2/0070/0070-1.webp',
+        //   name: 'A00001-0070',
+        //   productId: '0070',
+        // },
       ],
     }
   },
@@ -202,75 +202,76 @@ export default {
   //     this.show = false
   //   }
   // },
-  // methods: {
-  //   getDetail(productId) {
-  //     this.productDetail = {
-  //       name: productId,
-  //       path: '/Products/ProductDetail',
-  //     }
-  //     this.$router.push({
-  //       path: '/Products/ProductDetail',
-  //       query: {
-  //         productId: productId,
-  //       },
-  //     })
-  //   },
-  //   getCategories() {
-  //     apis
-  //       .QueryProductCategories({})
-  //       .then(({ data }) => {
-  //         this.$store.commit('user/updateState', {
-  //           categories: data.result,
-  //         })
-  //         this.getProduct(data.result[0].categoryId)
-  //         // Object.assign(this.gruop, data.result)
-  //         // this.$set(this.gruop)
-  //       })
-  //       .catch(() => {})
-  //   },
-  //   getProduct(categoryId) {
-  //     apis
-  //       .QueryProductListByCateId({
-  //         categoryId: categoryId,
-  //       })
-  //       .then(({ data }) => {
-  //         this.$store.commit('user/updateState', {
-  //           products: data.result,
-  //         })
-  //         // Object.assign(this.products, data.result)
-  //         // this.$set(this.products)
-  //       })
-  //       .catch(() => {})
-  //   },
-  //   pause() {
-  //     this.$refs.child.pause()
-  //   },
-  //   resume() {
-  //     this.$refs.child.resume()
-  //   },
-  //   ContactUs() {
-  //     if (this.user.email && this.user.message) {
-  //       apis
-  //         .ContactUs({
-  //           email: this.user.email,
-  //           message: this.user.message,
-  //         })
-  //         .then(() => {
-  //           this.user.email = null
-  //           this.user.message = null
-  //           this.$message.success('Send Email success!')
-  //         })
-  //         .catch(() => {
-  //           this.$message.error('Send Email error!')
-  //         })
-  //     }
-  //   },
-  // },
+  methods: {
+    //   getDetail(productId) {
+    //     this.productDetail = {
+    //       name: productId,
+    //       path: '/Products/ProductDetail',
+    //     }
+    //     this.$router.push({
+    //       path: '/Products/ProductDetail',
+    //       query: {
+    //         productId: productId,
+    //       },
+    //     })
+    //   },
+    //   getCategories() {
+    //     apis
+    //       .QueryProductCategories({})
+    //       .then(({ data }) => {
+    //         this.$store.commit('user/updateState', {
+    //           categories: data.result,
+    //         })
+    //         this.getProduct(data.result[0].categoryId)
+    //         // Object.assign(this.gruop, data.result)
+    //         // this.$set(this.gruop)
+    //       })
+    //       .catch(() => {})
+    //   },
+    //   getProduct(categoryId) {
+    //     apis
+    //       .QueryProductListByCateId({
+    //         categoryId: categoryId,
+    //       })
+    //       .then(({ data }) => {
+    //         this.$store.commit('user/updateState', {
+    //           products: data.result,
+    //         })
+    //         // Object.assign(this.products, data.result)
+    //         // this.$set(this.products)
+    //       })
+    //       .catch(() => {})
+    //   },
+    pause() {
+      this.$refs.child.pause()
+    },
+    resume() {
+      this.$refs.child.resume()
+    },
+    //   ContactUs() {
+    //     if (this.user.email && this.user.message) {
+    //       apis
+    //         .ContactUs({
+    //           email: this.user.email,
+    //           message: this.user.message,
+    //         })
+    //         .then(() => {
+    //           this.user.email = null
+    //           this.user.message = null
+    //           this.$message.success('Send Email success!')
+    //         })
+    //         .catch(() => {
+    //           this.$message.error('Send Email error!')
+    //         })
+    //     }
+    //   },
+  },
 }
 </script>
 
 <style scoped lang="less">
 #Home {
+  margin-top: 136px;
   input {
     padding: 0 8px 8px 8px;
     border: 0;
@@ -322,8 +323,8 @@ export default {
       justify-content: space-between;
       .item {
         display: grid;
-        grid-template-columns: auto auto auto;
-        grid-template-rows: auto auto auto;
+        grid-template-columns: auto auto;
+        grid-template-rows: auto auto;
         grid-gap: 16px 6px;
         > div {
           width: 280px;
