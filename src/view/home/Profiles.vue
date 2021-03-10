@@ -54,7 +54,7 @@ export default {
   color: #1d1d1f;
   .title {
     margin: 189px 0 95px;
-    color: #515154;
+    color: #1d1d1f;
     font-size: 56px;
     font-weight: 900;
   }

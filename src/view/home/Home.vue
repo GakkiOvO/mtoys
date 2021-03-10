@@ -329,9 +329,9 @@ export default {
         > div {
           width: 280px;
           text-align: center;
-          &:hover {
-            border: 1px solid#ff4f8d;
-          }
+          // &:hover {
+          //   border: 1px solid#ff4f8d;
+          // }
           img {
             height: 263px;
             object-fit: contain;
