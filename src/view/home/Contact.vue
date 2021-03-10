@@ -2,23 +2,24 @@
   <div id="Contact">
     <section class="contact">
       <div class="banner">
-        <img src="@/assets/image/home/banner_04.webp" alt="" />
         <div class="title">CONTACT US</div>
       </div>
       <div class="method">
         <div class="qr">
-          <img class="face" width="60" height="60" src="@/assets/image/home/icon_face.png" />
-          <!-- <img class="face" src="@/assets/image/home/u48.webp" /> -->
-          <div class="Echo">Echo</div>
-          <!-- <div>Whats APP 联系人</div> -->
-          <img src="@/assets/image/home/img_ewm.webp" />
-        </div>
-        <div class="qr">
-          <img class="face" width="60" height="60" src="@/assets/image/home/icon_face.png" />
-          <!-- <img class="face" src="@/assets/image/home/u48.webp" /> -->
-          <div class="Echo">Echo</div>
-          <!-- <div>Whats APP 联系人</div> -->
-          <img src="@/assets/image/home/img_ewm.webp" />
+          <div>
+            <img class="face" src="@/assets/image/home/icon_face.png" />
+            <!-- <img class="face" src="@/assets/image/home/u48.webp" /> -->
+            <div class="Echo">Echo</div>
+            <!-- <div>Whats APP 联系人</div> -->
+            <img class="qr-code" src="@/assets/image/home/img_ewm.webp" />
+          </div>
+          <div>
+            <img class="face" src="@/assets/image/home/icon_face.png" />
+            <!-- <img class="face" src="@/assets/image/home/u48.webp" /> -->
+            <div class="Echo">Echo</div>
+            <!-- <div>Whats APP 联系人</div> -->
+            <img class="qr-code" src="@/assets/image/home/img_ewm.webp" />
+          </div>
         </div>
         <div class="submit">
           <div class="flex">
@@ -76,80 +77,17 @@ export default {
 
 <style lang="less" scoped>
 #Contact {
-  .contact {
-    text-align: center;
-    //width: 1200px;
-    margin: 0 auto 219px;
-    > .banner {
-      position: relative;
-      margin: 48px 0 119px;
-    }
-    .method {
-      display: flex;
-      .qr {
-        display: flex;
-        flex-direction: column;
-        text-align: center;
-        margin-right: 98px;
-        font-family: ArialMT;
-        font-size: 20px;
-        font-weight: normal;
-        font-stretch: normal;
-        line-height: 28px;
-        color: #1d1d1f;
-        .Echo {
-          padding: 8px 0;
-        }
-        .face {
-          margin: 0 auto;
-          // width: 310px;
-          // height: 310px;
-        }
-      }
-      .submit {
-        display: flex;
-        flex-direction: column;
-        width: 659px;
-        .flex {
-          display: flex;
-          border-bottom: 1px solid #bdbdc3;
-          > input {
-            border: none;
-          }
-        }
-        .field {
-          text-align: left;
-          white-space: nowrap;
-          font-family: ArialMT;
-          font-size: 18px;
-          font-weight: normal;
-          // line-height: 28px;
-          color: #000000;
-          &.message {
-            margin-top: 16px;
-            // margin-bottom: 178px;
-          }
-        }
-        .button {
-          cursor: pointer;
-          margin-top: 16px;
-          display: flex;
-          justify-content: flex-end;
-          > div {
-            width: 160px;
-            height: 32px;
-            line-height: 32px;
-            text-align: center;
-            border-radius: 16px;
-            background-color: #ff4f8d;
-            font-family: ArialMT;
-            font-size: 20px;
-            font-weight: normal;
-            color: #ffffff;
-          }
-        }
-      }
-    }
+  margin: 192px 0;
+  font-family: ArialMT;
+  font-size: 24px;
+  font-weight: normal;
+  color: #1d1d1f;
+  .title {
+    font-size: 56px;
+    font-weight: 900;
+  }
+  .field {
+    font-size: 30px;
   }
   input {
     padding: 0 8px 8px 8px;
@@ -157,8 +95,9 @@ export default {
     outline: 0;
     background: transparent;
     border-bottom: 1px solid #bdbdc3;
-    font-size: 18px;
+    font-size: 30px;
     width: 100%;
+    color: #1d1d1f;
   }
   textarea {
     padding: 16px 0 0 0;
@@ -167,18 +106,76 @@ export default {
     outline: 0;
     background: transparent;
     border-bottom: 1px solid #bdbdc3;
-    font-size: 18px;
+    font-size: 30px;
     width: 100%;
+    color: #1d1d1f;
   }
-  .title {
-    position: absolute;
-    top: 209px;
-    right: 306px;
-    text-align: center;
-    font-family: ArialMT;
-    font-size: 80px;
-    font-weight: 900;
-    color: #ffffff;
+  .contact {
+    padding: 0 44px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .method {
+      width: 100%;
+      text-align: center;
+      .qr {
+        margin-top: 88px;
+        padding: 0 104px;
+        display: flex;
+        justify-content: space-between;
+        .face {
+          width: 60px;
+          height: 60px;
+        }
+        .qr-code {
+          width: 155px;
+          height: 155px;
+        }
+      }
+      .submit {
+        margin-top: 145px;
+        display: flex;
+        flex-direction: column;
+        .flex {
+          display: flex;
+          border-bottom: 1px solid #bdbdc3;
+          > input {
+            border: none;
+          }
+        }
+        .field {
+          white-space: nowrap;
+          font-family: ArialMT;
+          font-size: 30px;
+          font-weight: normal;
+          // line-height: 28px;
+          color: #515154;
+          &.message {
+            margin-top: 16px;
+            text-align: left;
+            // margin-bottom: 178px;
+          }
+        }
+        .button {
+          cursor: pointer;
+          margin-top: 51px;
+          display: flex;
+          justify-content: flex-end;
+          > div {
+            width: 400px;
+            height: 60px;
+            line-height: 60px;
+            text-align: center;
+            border-radius: 30px;
+            background-color: #ff4f8d;
+            font-family: ArialMT;
+            font-size: 28px;
+            font-weight: normal;
+            color: #ffffff;
+          }
+        }
+      }
+    }
   }
 }
 </style>

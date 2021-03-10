@@ -1,10 +1,9 @@
 <template>
   <div id="Home">
-    <section class="swiper">
-      <!-- <img src="@/assets/image/home/banner_01.webp" /> -->
+    <!-- <section class="swiper">
       <Homeslide ref="child" />
-    </section>
-    <section class="product">
+    </section> -->
+    <!-- <section class="product">
       <div class="title bottom">
         PRODUCT
         <p>CATEGORY</p>
@@ -25,7 +24,6 @@
           <img src="@/assets/image/home/img_her.webp" />
           <div style="position: absolute; bottom: 35px">
             <div class="alt">FOR HER</div>
-            <!-- <div class="more her">VIEW MORE >></div> -->
           </div>
         </div>
       </div>
@@ -34,7 +32,6 @@
           <img src="@/assets/image/home/img_him.webp" />
           <div style="position: absolute; bottom: 35px">
             <div class="alt">FOR HIM</div>
-            <!-- <div class="more her">VIEW MORE >></div> -->
           </div>
         </div>
         <div class="item">
@@ -45,8 +42,10 @@
           </div>
         </div>
       </div>
-    </section>
-    <section class="profile">
+    </section> -->
+    <Profile />
+    <Contact />
+    <!-- <section class="profile">
       <div class="title">PROFILE</div>
       <div class="context">
         <img src="@/assets/image/home/img_profile.webp" alt="" />
@@ -78,22 +77,18 @@
           <div style="width: 276px">Our customers come from all over the world.</div>
         </div>
       </div>
-    </section>
-    <section class="contact">
+    </section> -->
+    <!-- <section class="contact">
       <div class="title">CONTACT US</div>
       <div class="method">
         <div class="qr">
           <img class="face" width="60" height="60" src="@/assets/image/home/icon_face.png" />
-          <!-- <img class="face" src="@/assets/image/home/u48.webp" /> -->
           <div class="Echo">Echo</div>
-          <!-- <div>Whats APP 联系人</div> -->
           <img src="@/assets/image/home/img_ewm.webp" />
         </div>
         <div class="qr">
           <img class="face" width="60" height="60" src="@/assets/image/home/icon_face.png" />
-          <!-- <img class="face" src="@/assets/image/home/u48.webp" /> -->
           <div class="Echo">Echo</div>
-          <!-- <div>Whats APP 联系人</div> -->
           <img src="@/assets/image/home/img_ewm.webp" />
         </div>
         <div class="submit">
@@ -106,18 +101,25 @@
           <div class="button" @click.stop="ContactUs()"><div>SUBMIT</div></div>
         </div>
       </div>
-    </section>
+    </section> -->
     <Popup v-show="show" @close="show = false" />
   </div>
 </template>
 
 <script>
-import Homeslide from '@/components/Homeslide'
+// import Homeslide from '@/components/Homeslide'
 import Popup from '@/components/Popup'
-import apis from '@/network/orderApi'
+// import apis from '@/network/orderApi'
+import Profile from './Profiles'
+import Contact from './Contact'
 export default {
   name: 'Confirmation',
-  components: { Homeslide, Popup },
+  components: {
+    // Homeslide,
+    Popup,
+    Profile,
+    Contact,
+  },
   data() {
     return {
       show: false,
@@ -191,79 +193,79 @@ export default {
       ],
     }
   },
-  created() {
-    // this.ContactUs()
-    if (this.$store.state.user.categories.length === 0) {
-      this.show = true
-      this.getCategories()
-    } else {
-      this.show = false
-    }
-  },
-  methods: {
-    getDetail(productId) {
-      this.productDetail = {
-        name: productId,
-        path: '/Products/ProductDetail',
-      }
-      this.$router.push({
-        path: '/Products/ProductDetail',
-        query: {
-          productId: productId,
-        },
-      })
-    },
-    getCategories() {
-      apis
-        .QueryProductCategories({})
-        .then(({ data }) => {
-          this.$store.commit('user/updateState', {
-            categories: data.result,
-          })
-          this.getProduct(data.result[0].categoryId)
-          // Object.assign(this.gruop, data.result)
-          // this.$set(this.gruop)
-        })
-        .catch(() => {})
-    },
-    getProduct(categoryId) {
-      apis
-        .QueryProductListByCateId({
-          categoryId: categoryId,
-        })
-        .then(({ data }) => {
-          this.$store.commit('user/updateState', {
-            products: data.result,
-          })
-          // Object.assign(this.products, data.result)
-          // this.$set(this.products)
-        })
-        .catch(() => {})
-    },
-    pause() {
-      this.$refs.child.pause()
-    },
-    resume() {
-      this.$refs.child.resume()
-    },
-    ContactUs() {
-      if (this.user.email && this.user.message) {
-        apis
-          .ContactUs({
-            email: this.user.email,
-            message: this.user.message,
-          })
-          .then(() => {
-            this.user.email = null
-            this.user.message = null
-            this.$message.success('Send Email success!')
-          })
-          .catch(() => {
-            this.$message.error('Send Email error!')
-          })
-      }
-    },
-  },
+  // created() {
+  //   // this.ContactUs()
+  //   if (this.$store.state.user.categories.length === 0) {
+  //     this.show = true
+  //     this.getCategories()
+  //   } else {
+  //     this.show = false
+  //   }
+  // },
+  // methods: {
+  //   getDetail(productId) {
+  //     this.productDetail = {
+  //       name: productId,
+  //       path: '/Products/ProductDetail',
+  //     }
+  //     this.$router.push({
+  //       path: '/Products/ProductDetail',
+  //       query: {
+  //         productId: productId,
+  //       },
+  //     })
+  //   },
+  //   getCategories() {
+  //     apis
+  //       .QueryProductCategories({})
+  //       .then(({ data }) => {
+  //         this.$store.commit('user/updateState', {
+  //           categories: data.result,
+  //         })
+  //         this.getProduct(data.result[0].categoryId)
+  //         // Object.assign(this.gruop, data.result)
+  //         // this.$set(this.gruop)
+  //       })
+  //       .catch(() => {})
+  //   },
+  //   getProduct(categoryId) {
+  //     apis
+  //       .QueryProductListByCateId({
+  //         categoryId: categoryId,
+  //       })
+  //       .then(({ data }) => {
+  //         this.$store.commit('user/updateState', {
+  //           products: data.result,
+  //         })
+  //         // Object.assign(this.products, data.result)
+  //         // this.$set(this.products)
+  //       })
+  //       .catch(() => {})
+  //   },
+  //   pause() {
+  //     this.$refs.child.pause()
+  //   },
+  //   resume() {
+  //     this.$refs.child.resume()
+  //   },
+  //   ContactUs() {
+  //     if (this.user.email && this.user.message) {
+  //       apis
+  //         .ContactUs({
+  //           email: this.user.email,
+  //           message: this.user.message,
+  //         })
+  //         .then(() => {
+  //           this.user.email = null
+  //           this.user.message = null
+  //           this.$message.success('Send Email success!')
+  //         })
+  //         .catch(() => {
+  //           this.$message.error('Send Email error!')
+  //         })
+  //     }
+  //   },
+  // },
 }
 </script>
 

@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <NavTop />
-    <!-- <router-view /> -->
+    <NavTop :group="group" />
+    <router-view />
     <NavBottom />
     <!-- <Myslide /> -->
   </div>
@@ -10,6 +10,7 @@
 <script>
 import NavTop from '@/components/NavTop-black'
 import NavBottom from '@/components/NavBottom-black'
+import apis from '@/network/orderApi'
 // import Myslide from '@/components/Myslide'
 export default {
   name: 'App',
@@ -17,6 +18,20 @@ export default {
     NavTop,
     NavBottom,
     // Myslide,
+  },
+  data() {
+    return {
+      group: [],
+    }
+  },
+  created() {
+    apis
+      .QueryProductCategories({})
+      .then(({ data }) => {
+        Object.assign(this.group, data.result)
+        this.$set(this.group)
+      })
+      .catch(() => {})
   },
   // mounted() {
   //   var param = {

@@ -5,38 +5,49 @@
       <div class="logo">
         <img src="@/assets/image/home/logo.png" alt="" />
       </div>
-      <!-- <div class="menu">
-        <div :class="['name', { click: selectType === 'home' }]" @click.stop="select('home')">
-          HOME
-        </div>
-        <div
-          :class="['name', { click: selectType === 'products' }]"
-          @click.stop="select('products')"
-        >
-          PRODUCTS
-        </div>
-        <div
-          :class="['name', { click: selectType === 'profiles' }]"
-          @click.stop="select('profiles')"
-        >
-          PROFILES
-        </div>
-        <div :class="['name', { click: selectType === 'contact' }]" @click.stop="select('contact')">
-          CONTACT US
-        </div>
-      </div> -->
+      <img
+        v-show="open"
+        class="close"
+        src="@/assets/image/home/btn_close2.png"
+        alt=""
+        @click="open = false"
+      />
       <mu-drawer :open.sync="open" :docked="false">
-        <mu-list>
-          <mu-list-item button>
-            <mu-list-item-title>Menu Item 1</mu-list-item-title>
-          </mu-list-item>
-          <mu-list-item button>
-            <mu-list-item-title>Menu Item 2</mu-list-item-title>
-          </mu-list-item>
-          <mu-list-item button @click="open = false">
-            <mu-list-item-title>Close</mu-list-item-title>
-          </mu-list-item>
-        </mu-list>
+        <div class="menu">
+          <!-- <div :class="['name', { click: selectType === 'home' }]" @click.stop="select('home')">
+            HOME
+          </div> -->
+          <div
+            :class="['name', { click: selectType === 'products' }]"
+            @click.stop="select('products')"
+          >
+            PRODUCTS
+            <div class="group">
+              <div
+                v-for="(item, i) in group"
+                :key="'item' + i"
+                :class="{ click: i == index }"
+                @click="getProduct(item, i)"
+              >
+                {{ item.categoryDesc }}
+              </div>
+            </div>
+          </div>
+          <div class="underline"></div>
+          <div
+            :class="['name', { click: selectType === 'profiles' }]"
+            @click.stop="select('profiles')"
+          >
+            PROFILES
+          </div>
+          <div class="underline"></div>
+          <div
+            :class="['name', { click: selectType === 'contact' }]"
+            @click.stop="select('contact')"
+          >
+            CONTACT US
+          </div>
+        </div>
       </mu-drawer>
     </div>
     <!-- <Breadcrumb /> -->
@@ -45,13 +56,25 @@
 
 <script>
 // import Breadcrumb from './Breadcrumb'
+import apis from '@/network/orderApi'
 export default {
   name: 'Head',
+  props: {
+    group: {
+      type: Array,
+      default: function () {
+        return []
+      },
+    },
+  },
   // components: { Breadcrumb },
   data() {
     return {
+      index: 0,
       selectType: null,
       open: false,
+      categorie: {},
+      products: [],
     }
   },
   watch: {
@@ -60,6 +83,24 @@ export default {
     },
   },
   methods: {
+    getProduct(item, i) {
+      this.categorie = {
+        name: item.categoryDesc,
+        path: '/Products',
+        index: i,
+      }
+      this.index = i
+      this.products = []
+      apis
+        .QueryProductListByCateId({
+          categoryId: item.categoryId,
+        })
+        .then(({ data }) => {
+          Object.assign(this.products, data.result)
+          this.$set(this.products)
+        })
+        .catch(() => {})
+    },
     select(type) {
       this.selectType = type
       if (this.$router.history.current.name != type) {
@@ -99,29 +140,52 @@ export default {
         object-fit: contain;
       }
     }
+    .close {
+      position: absolute;
+      top: 160px;
+      right: 95px;
+      width: 31px;
+      height: 30px;
+    }
     .menu {
       // padding-left: 433px;
-      display: flex;
       border: none;
       .name {
-        margin: auto;
         // margin-top: 27px;
-        width: 152px;
-        border-bottom: 1px solid #1d1d1f;
-        text-align: center;
+        padding: 77px 0 56px 40px;
         font-family: 'ArialMT', 'Arial', sans-serif;
         font-weight: 400;
         font-style: normal;
-        font-size: 18px;
-        color: #f5f5f7;
-        // background-color: rgba(255, 255, 255, 1);
-        box-shadow: 5px 0 5px #1d1d1f;
+        font-size: 36px;
+        color: #1d1d1f;
+        // line-height: 36px;
         cursor: pointer;
         &.click {
           // font-size: 18px;
-          box-shadow: 5px 0 5px #1d1d1f, 0px 5px 5px 0px #1d1d1f inset;
           color: #929292;
         }
+        .group {
+          padding: 73px 0 0 39px;
+          font-family: ArialMT;
+          font-size: 32px;
+          font-weight: normal;
+          color: #1d1d1f;
+          > div {
+            padding-bottom: 80px;
+            text-decoration: underline;
+            color: #86868b;
+            &:last-child {
+              padding-bottom: 32px;
+            }
+          }
+          .click {
+            color: #1d1d1f;
+          }
+        }
+      }
+      .underline {
+        margin-left: 40px;
+        border-bottom: 1px solid #bdbdc3;
       }
     }
   }

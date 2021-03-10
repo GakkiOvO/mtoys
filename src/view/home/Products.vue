@@ -13,12 +13,6 @@
           >
             {{ item.categoryDesc }}
           </div>
-          <!-- <div class="click">For her</div>
-          <div>For him</div>
-          <div>Vibrators</div>
-          <div>Vibrators</div>
-          <div>Vibrators</div>
-          <div>Vibrators</div> -->
         </div>
       </div>
       <div class="detail">
