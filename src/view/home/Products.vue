@@ -2,7 +2,7 @@
   <div id="Products">
     <Breadcrumb :categorie="categorie" :product-detail="productDetail" />
     <div v-if="$route.path == '/Products'" class="flex">
-      <div class="navigation">
+      <!-- <div class="navigation">
         <div class="categories">Product Categories</div>
         <div class="group">
           <div
@@ -14,7 +14,7 @@
             {{ item.categoryDesc }}
           </div>
         </div>
-      </div>
+      </div> -->
       <div class="detail">
         <div v-for="(product, i) in products" :key="'product' + i" class="product">
           <div class="hover" @click="getDetail(product.productId)">
@@ -38,12 +38,11 @@ export default {
   components: { Breadcrumb },
   data() {
     return {
-      index: null,
       // categoryDesc: null,
       categorie: {},
       productDetail: {},
       // gruop: ['For her', 'For him', 'Vibrators', 'Vibrators', 'Vibrators', 'Vibrators'],
-      gruop: [],
+      // gruop: [],
       products: [],
       // products: [
       //   {
@@ -84,6 +83,16 @@ export default {
       // ],
     }
   },
+  watch: {
+    $route: {
+      handler(val) {
+        if (val.name === 'products' && val.query.item) {
+          const { item, i } = val.query
+          this.getProduct(JSON.parse(item), i)
+        }
+      },
+    },
+  },
   created() {
     if (this.$route.name === 'product detail') {
       this.$nextTick(() => {
@@ -92,41 +101,43 @@ export default {
           path: '/Products/ProductDetail',
         }
       })
-    }
-    if (this.$store.state.user.categories.length === 0) {
-      this.getCategories()
     } else {
-      this.index = 0
-      this.$nextTick(() => {
-        this.categorie = {
-          name: this.$store.state.user.categories[0].categoryDesc,
-          path: '/Products',
-          index: 0,
-        }
-      })
-      Object.assign(this.gruop, this.$store.state.user.categories)
-      Object.assign(this.products, this.$store.state.user.products)
-      this.$set(this.products)
-      this.$set(this.gruop)
+      const { item, i } = this.$route.query
+      if (this.$store.state.user.categories.length !== 0 && i === '0') {
+        this.$nextTick(() => {
+          this.categorie = {
+            name: this.$store.state.user.categories[0].categoryDesc,
+            path: this.$route.fullPath,
+            index: 0,
+          }
+        })
+        // Object.assign(this.gruop, this.$store.state.user.categories)
+        Object.assign(this.products, this.$store.state.user.products)
+        this.$set(this.products)
+        // this.$set(this.gruop)
+      } else {
+        this.$nextTick(() => {
+          this.getProduct(JSON.parse(item), i)
+        })
+      }
     }
   },
   methods: {
-    getCategories() {
-      apis
-        .QueryProductCategories({})
-        .then(({ data }) => {
-          Object.assign(this.gruop, data.result)
-          this.$set(this.gruop)
-        })
-        .catch(() => {})
-    },
+    // getCategories() {
+    //   apis
+    //     .QueryProductCategories({})
+    //     .then(({ data }) => {
+    //       Object.assign(this.gruop, data.result)
+    //       this.$set(this.gruop)
+    //     })
+    //     .catch(() => {})
+    // },
     getProduct(item, i) {
       this.categorie = {
         name: item.categoryDesc,
-        path: '/Products',
+        path: this.$route.fullPath,
         index: i,
       }
-      this.index = i
       this.products = []
       apis
         .QueryProductListByCateId({
@@ -158,6 +169,7 @@ export default {
 #Products {
   // //width: 1200px;
   // padding: 0 360px;
+  padding-top: 136px;
   margin: auto;
   .flex {
     display: flex;
@@ -190,55 +202,49 @@ export default {
       }
     }
     .detail {
-      width: 1004px;
-
       .product {
         .hover {
           border: 1px solid transparent;
           height: 100%;
           position: relative;
+          img {
+            width: 373px;
+            height: 378px;
+          }
           &:hover {
             border: 1px solid#ff4f8d;
           }
           > div {
-            //   width: 236px;
-            margin-left: 33px;
-            text-align: left;
+            text-align: center;
           }
         }
-        margin-right: 16px;
         margin-bottom: 42px;
-        width: 306px;
-        height: 500px;
+        width: 373px;
+        height: 610px;
         text-align: center;
         float: left;
 
         .name {
           margin-top: 16px;
           font-family: ArialMT;
-          font-size: 20px;
+          font-size: 32px;
           font-weight: 900;
           color: #1d1d1f;
         }
         .desc {
           margin-top: 10px;
           font-family: ArialMT;
-          font-size: 14px;
+          font-size: 24px;
+          line-height: 24px;
           font-weight: normal;
           color: #86868b;
         }
         .more {
           position: absolute;
           bottom: 0;
+          left: 102px;
           cursor: pointer;
-          margin-bottom: 42px;
-          margin-top: 22px;
-          border-radius: 20px;
-          border: solid 1px #ff4f8d;
-          width: 128px;
-          height: 20px;
-          line-height: 20px;
-          text-align: center !important;
+          text-decoration: underline;
           font-family: ArialMT;
           font-size: 12px;
           font-weight: normal;

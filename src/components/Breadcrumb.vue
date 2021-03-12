@@ -37,21 +37,33 @@ export default {
     }
   },
   watch: {
+    crumbList() {
+      if (this.crumbList.length > 4) this.crumbList.pop()
+      if (this.crumbList.length === 4 && !this.crumbList[3].name) this.crumbList.pop()
+    },
     categorie(val) {
-      // console.log(this.categorie, val)
       if (this.crumbList.length === 3) this.crumbList.pop()
       this.crumbList.push(val)
+      this.$store.commit('user/updateState', {
+        categorie: val,
+      })
     },
     productDetail(val) {
-      // console.log(this.productDetail, val)
       if (this.crumbList.length === 4) this.crumbList.pop()
       this.crumbList.push(val)
+      this.$store.commit('user/updateState', {
+        productDetail: val,
+      })
     },
   },
-
+  mounted() {
+    if (this.$store.state.user.categorie) {
+      this.crumbList.push(this.$store.state.user.categorie)
+    }
+  },
   methods: {
     push(path) {
-      if (this.$route.path != path) {
+      if (this.$route.fullPath != path && path !== '/Products') {
         this.$router.push({
           path: path,
         })
@@ -64,7 +76,7 @@ export default {
 
 <style lang="less" scoped>
 #Breadcrumb {
-  margin: 36px auto;
+  margin: 36px 0 0 28px;
   display: flex;
   //width: 1200px;
   background: #ffffff;

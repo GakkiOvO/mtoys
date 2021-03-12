@@ -14,12 +14,13 @@
       />
       <mu-drawer :open.sync="open" :docked="false">
         <div class="menu">
-          <!-- <div :class="['name', { click: selectType === 'home' }]" @click.stop="select('home')">
+          <div :class="['name', { click: selectType === 'Home' }]" @click.stop="select('Home')">
             HOME
-          </div> -->
+          </div>
+          <div class="underline"></div>
           <div
-            :class="['name', { click: selectType === 'product' }]"
-            @click.stop="select('product')"
+            :class="['name', { click: selectType === 'Products' }]"
+            @click.stop="select('Products')"
           >
             PRODUCTS
             <div class="group">
@@ -27,7 +28,7 @@
                 v-for="(item, i) in group"
                 :key="'item' + i"
                 :class="{ click: i == index }"
-                @click="getProduct(item, i)"
+                @click.stop="getProduct(item, i)"
               >
                 {{ item.categoryDesc }}
               </div>
@@ -56,7 +57,6 @@
 
 <script>
 // import Breadcrumb from './Breadcrumb'
-import apis from '@/network/orderApi'
 export default {
   name: 'Head',
   props: {
@@ -70,7 +70,7 @@ export default {
   // components: { Breadcrumb },
   data() {
     return {
-      index: 0,
+      index: null,
       selectType: null,
       open: false,
       categorie: {},
@@ -84,32 +84,34 @@ export default {
   },
   methods: {
     getProduct(item, i) {
-      this.categorie = {
-        name: item.categoryDesc,
-        path: '/Products',
-        index: i,
+      this.selectType = 'Products'
+      this.open = false
+      // document.getElementById(type).scrollIntoView({ block: 'start', behavior: 'smooth' })
+      if (this.index !== i) {
+        this.$router.push({
+          path: '/Products',
+          query: {
+            item: JSON.stringify(item),
+            i,
+          },
+        })
       }
       this.index = i
-      this.products = []
-      apis
-        .QueryProductListByCateId({
-          categoryId: item.categoryId,
-        })
-        .then(({ data }) => {
-          Object.assign(this.products, data.result)
-          this.$set(this.products)
-        })
-        .catch(() => {})
     },
     select(type) {
       this.selectType = type
       this.open = false
-      document.getElementById(type).scrollIntoView({ block: 'start', behavior: 'smooth' })
-      // if (this.$router.history.current.name != type) {
-      //   this.$router.push({
-      //     name: type,
-      //   })
-      // }
+      // document.getElementById(type).scrollIntoView({ block: 'start', behavior: 'smooth' })
+      if (this.$route.name != type.toLowerCase()) {
+        if (type === 'Products') {
+          this.getProduct(this.group[0], 0)
+        } else {
+          this.index = null
+          this.$router.push({
+            path: `/${type}`,
+          })
+        }
+      }
     },
   },
 }
@@ -159,12 +161,12 @@ export default {
         font-weight: 400;
         font-style: normal;
         font-size: 36px;
-        color: #1d1d1f;
+        color: #929292;
         // line-height: 36px;
         cursor: pointer;
         &.click {
           // font-size: 18px;
-          color: #929292;
+          color: #1d1d1f;
         }
         .group {
           padding: 73px 0 0 39px;

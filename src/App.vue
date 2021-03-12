@@ -25,32 +25,42 @@ export default {
     }
   },
   created() {
-    apis
-      .QueryProductCategories({})
-      .then(({ data }) => {
-        Object.assign(this.group, data.result)
-        this.$set(this.group)
-      })
-      .catch(() => {})
+    if (this.$store.state.user.categories.length !== 0) {
+      this.group = this.$store.state.user.categories
+      // Object.assign(this.gruop, this.$store.state.user.categories)
+    } else {
+      this.getCategories()
+    }
   },
-  // mounted() {
-  //   var param = {
-  //     // header: {
-  //     //   'Content-Type': 'application/json;charset=utf-8',
-  //     //   'Cache-Control': 'no-cache',
-  //     //   'Access-Control-Expose-Headers': 'RetStatus',
-  //     // },
-  //     callbackParamter: 'callback',
-  //     callback: 'callback_success',
-  //   }
-  //   this.$jsonp('https://api.adultlovetoys.net/lovetoys-api/queryProductCategories', param)
-  //     .then((json) => {
-  //       console.log(json, 111)
-  //     })
-  //     .catch((err) => {
-  //       console.log(err, 222)
-  //     })
-  // },
+  methods: {
+    getCategories() {
+      apis
+        .QueryProductCategories({})
+        .then(({ data }) => {
+          this.$store.commit('user/updateState', {
+            categories: data.result,
+          })
+          this.getProduct(data.result[0].categoryId)
+          Object.assign(this.group, data.result)
+          this.$set(this.group)
+        })
+        .catch(() => {})
+    },
+    getProduct(categoryId) {
+      apis
+        .QueryProductListByCateId({
+          categoryId: categoryId,
+        })
+        .then(({ data }) => {
+          this.$store.commit('user/updateState', {
+            products: data.result,
+          })
+          // Object.assign(this.products, data.result)
+          // this.$set(this.products)
+        })
+        .catch(() => {})
+    },
+  },
 }
 </script>
 

@@ -195,6 +195,9 @@ export default {
     const { productId } = this.$route.query
     this.getDetail(productId)
   },
+  destroyed() {
+    this.$parent.productDetail = {}
+  },
   methods: {
     getDetail(productId) {
       apis
@@ -202,7 +205,6 @@ export default {
           productId: productId,
         })
         .then(({ data }) => {
-          // console.log(data)
           this.product = data.result
           data.result.imgUrlList.forEach((img) => {
             let obj = {

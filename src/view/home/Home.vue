@@ -103,27 +103,27 @@
         </div>
       </div>
     </section> -->
-    <Popup v-show="show" @close="show = false" />
+    <!-- <Popup v-show="show" @close="show = false" /> -->
   </div>
 </template>
 
 <script>
 import Homeslide from '@/components/Homeslide'
-import Popup from '@/components/Popup'
-// import apis from '@/network/orderApi'
-import Profile from './Profiles'
-import Contact from './Contact'
+// import Popup from '@/components/Popup'
+import apis from '@/network/orderApi'
+import Profile from '@/components/Profiles'
+import Contact from '@/components/Contact'
 export default {
   name: 'Confirmation',
   components: {
     Homeslide,
-    Popup,
+    // Popup,
     Profile,
     Contact,
   },
   data() {
     return {
-      show: false,
+      // show: false,
       user: {
         email: null,
         message: null,
@@ -144,21 +144,6 @@ export default {
           name: 'A00001-0054',
           productId: '0054',
         },
-        // {
-        //   img: 'https://lovetoys-imgs.s3.us-east-2.amazonaws.com/lovetoys2/0532/0532-1.webp',
-        //   name: 'A00001-0532',
-        //   productId: '0532',
-        // },
-        // {
-        //   img: 'https://lovetoys-imgs.s3.us-east-2.amazonaws.com/lovetoys2/0165/0165-1.webp',
-        //   name: 'A00001-0165',
-        //   productId: '0165',
-        // },
-        // {
-        //   img: 'https://lovetoys-imgs.s3.us-east-2.amazonaws.com/lovetoys2/0164/0164-1.webp',
-        //   name: 'A00001-0164',
-        //   productId: '0164',
-        // },
       ],
       records_him: [
         {
@@ -176,21 +161,6 @@ export default {
           name: 'A00001-0413',
           productId: '0413',
         },
-        // {
-        //   img: 'https://lovetoys-imgs.s3.us-east-2.amazonaws.com/lovetoys2/0415/0415-1.webp',
-        //   name: 'A00001-0415',
-        //   productId: '0415',
-        // },
-        // {
-        //   img: 'https://lovetoys-imgs.s3.us-east-2.amazonaws.com/lovetoys2/0616/0616-1.webp',
-        //   name: 'A00001-0616',
-        //   productId: '0616',
-        // },
-        // {
-        //   img: 'https://lovetoys-imgs.s3.us-east-2.amazonaws.com/lovetoys2/0070/0070-1.webp',
-        //   name: 'A00001-0070',
-        //   productId: '0070',
-        // },
       ],
     }
   },
@@ -203,46 +173,47 @@ export default {
   //     this.show = false
   //   }
   // },
+
   methods: {
-    //   getDetail(productId) {
-    //     this.productDetail = {
-    //       name: productId,
-    //       path: '/Products/ProductDetail',
-    //     }
-    //     this.$router.push({
-    //       path: '/Products/ProductDetail',
-    //       query: {
-    //         productId: productId,
-    //       },
-    //     })
-    //   },
-    //   getCategories() {
-    //     apis
-    //       .QueryProductCategories({})
-    //       .then(({ data }) => {
-    //         this.$store.commit('user/updateState', {
-    //           categories: data.result,
-    //         })
-    //         this.getProduct(data.result[0].categoryId)
-    //         // Object.assign(this.gruop, data.result)
-    //         // this.$set(this.gruop)
-    //       })
-    //       .catch(() => {})
-    //   },
-    //   getProduct(categoryId) {
-    //     apis
-    //       .QueryProductListByCateId({
-    //         categoryId: categoryId,
-    //       })
-    //       .then(({ data }) => {
-    //         this.$store.commit('user/updateState', {
-    //           products: data.result,
-    //         })
-    //         // Object.assign(this.products, data.result)
-    //         // this.$set(this.products)
-    //       })
-    //       .catch(() => {})
-    //   },
+    getDetail(productId) {
+      this.productDetail = {
+        name: productId,
+        path: '/Products/ProductDetail',
+      }
+      this.$router.push({
+        path: '/Products/ProductDetail',
+        query: {
+          productId: productId,
+        },
+      })
+    },
+    getCategories() {
+      apis
+        .QueryProductCategories({})
+        .then(({ data }) => {
+          this.$store.commit('user/updateState', {
+            categories: data.result,
+          })
+          this.getProduct(data.result[0].categoryId)
+          // Object.assign(this.gruop, data.result)
+          // this.$set(this.gruop)
+        })
+        .catch(() => {})
+    },
+    getProduct(categoryId) {
+      apis
+        .QueryProductListByCateId({
+          categoryId: categoryId,
+        })
+        .then(({ data }) => {
+          this.$store.commit('user/updateState', {
+            products: data.result,
+          })
+          // Object.assign(this.products, data.result)
+          // this.$set(this.products)
+        })
+        .catch(() => {})
+    },
     pause() {
       this.$refs.child.pause()
     },

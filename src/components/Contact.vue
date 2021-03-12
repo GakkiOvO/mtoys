@@ -2,7 +2,6 @@
   <div id="Contact">
     <section class="contact">
       <div class="banner">
-        <img src="@/assets/image/home/banner_04.webp" alt="" />
         <div class="title">CONTACT US</div>
       </div>
       <div class="method">
@@ -25,10 +24,20 @@
         <div class="submit">
           <div class="flex">
             <div class="field">Your email:</div>
-            <input v-model="user.email" type="text" />
+            <input
+              v-model="user.email"
+              type="text"
+              @focus="$emit('pauses')"
+              @blur="$emit('resumes')"
+            />
           </div>
           <div class="field message">Message:</div>
-          <textarea v-model="user.message" type="text" />
+          <textarea
+            v-model="user.message"
+            type="text"
+            @focus="$emit('pause')"
+            @blur="$emit('resume')"
+          />
           <div class="button" @click.stop="ContactUs()"><div>SUBMIT</div></div>
         </div>
       </div>
@@ -65,6 +74,12 @@ export default {
             this.$message.error('Send Email error!')
           })
       }
+    },
+    pause() {
+      this.$refs.child.pause()
+    },
+    resume() {
+      this.$refs.child.resume()
     },
   },
 }
@@ -107,29 +122,11 @@ export default {
     color: #1d1d1f;
   }
   .contact {
+    padding: 0 44px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    .banner {
-      position: relative;
-      img {
-        width: 750px;
-        height: 432px;
-        object-fit: cover;
-      }
-      .title {
-        position: absolute;
-        top: 209px;
-        right: 81px;
-        text-align: center;
-        font-family: ArialMT;
-        font-size: 80px;
-        font-weight: 900;
-        color: #ffffff;
-      }
-    }
     .method {
-      padding: 0 44px;
       width: 100%;
       text-align: center;
       .qr {

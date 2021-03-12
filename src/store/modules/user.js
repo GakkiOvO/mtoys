@@ -5,6 +5,8 @@ export default {
   state: {
     categories: [],
     products: [],
+    categorie: {},
+    productDetail: {},
     ...userState,
   },
 
