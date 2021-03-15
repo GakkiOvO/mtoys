@@ -33,10 +33,10 @@
       >
       </vueper-slide>
     </vueper-slides>
-    <div class="arrows">
+    <!-- <div class="arrows">
       <div class="left" @click="$refs.vueperslides1.previous()"></div>
       <div class="right" @click="$refs.vueperslides1.next()"></div>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -66,12 +66,11 @@ export default {
 
 <style lang="less" scoped>
 #Myslide {
+  padding: 0 23px;
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 532px;
-  height: 650px;
   z-index: 0;
   .thumbnails {
     margin: auto;
@@ -85,7 +84,6 @@ export default {
     border: 1px solid #fff;
     transition: 0.3s ease-in-out;
     opacity: 0.7;
-    cursor: pointer;
   }
 
   .thumbnails .vueperslide--active {
@@ -108,7 +106,6 @@ export default {
     border-top: 2px solid #929292;
     border-right: 2px solid #929292;
     transform: rotate(-135deg);
-    cursor: pointer;
   }
   .right {
     position: relative;
@@ -119,7 +116,6 @@ export default {
     border-top: 2px solid #929292;
     border-right: 2px solid #929292;
     transform: rotate(45deg);
-    cursor: pointer;
   }
 }
 </style>

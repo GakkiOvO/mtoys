@@ -82,7 +82,6 @@ export default {
     border: 1px solid #fff;
     transition: 0.3s ease-in-out;
     opacity: 0.7;
-    cursor: pointer;
   }
 
   .thumbnails .vueperslide--active {
@@ -102,7 +101,6 @@ export default {
     border-top: 2px solid #929292;
     border-right: 2px solid #929292;
     transform: rotate(-135deg);
-    cursor: pointer;
   }
   .right {
     width: 7px;
@@ -110,10 +108,8 @@ export default {
     border-top: 2px solid #929292;
     border-right: 2px solid #929292;
     transform: rotate(45deg);
-    cursor: pointer;
   }
   .more {
-    cursor: pointer;
     border-radius: 10px;
     width: 128px;
     height: 20px;

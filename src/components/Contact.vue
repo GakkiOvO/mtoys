@@ -168,7 +168,6 @@ export default {
           }
         }
         .button {
-          cursor: pointer;
           margin-top: 51px;
           display: flex;
           justify-content: flex-end;

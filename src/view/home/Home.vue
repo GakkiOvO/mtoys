@@ -342,7 +342,7 @@ export default {
       }
       .more {
         margin: 24px auto 0;
-        cursor: pointer;
+
         border-radius: 20px;
         border: solid 1px #413328;
         width: 253px;
@@ -453,7 +453,6 @@ export default {
           }
         }
         .button {
-          cursor: pointer;
           margin-top: 16px;
           display: flex;
           justify-content: flex-end;

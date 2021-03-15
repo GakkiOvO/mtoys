@@ -194,7 +194,6 @@ export default {
         text-decoration: underline;
         div {
           margin-bottom: 26px;
-          cursor: pointer;
         }
         .click {
           color: #1d1d1f;
@@ -243,7 +242,7 @@ export default {
           position: absolute;
           bottom: 0;
           left: 102px;
-          cursor: pointer;
+
           text-decoration: underline;
           font-family: ArialMT;
           font-size: 12px;

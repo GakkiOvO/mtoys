@@ -86,7 +86,7 @@ export default {
   color: #86868b;
   .item {
     max-width: max-content;
-    cursor: pointer;
+
     display: flex;
     .click {
       color: #1d1d1f;

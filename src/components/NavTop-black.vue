@@ -163,7 +163,7 @@ export default {
         font-size: 36px;
         color: #929292;
         // line-height: 36px;
-        cursor: pointer;
+
         &.click {
           // font-size: 18px;
           color: #1d1d1f;

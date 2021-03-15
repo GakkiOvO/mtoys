@@ -82,7 +82,6 @@ export default {
 
 <style scoped lang="less">
 .close {
-  cursor: pointer;
   width: 20px;
   height: 20px;
   top: 32px;
@@ -172,7 +171,6 @@ textarea {
     }
   }
   .button {
-    cursor: pointer;
     margin-top: 16px;
     display: flex;
     justify-content: flex-end;

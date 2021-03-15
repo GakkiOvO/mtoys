@@ -13,17 +13,21 @@
             <div class="product-detail-color">
               <div style="margin: auto 0">Color:</div>
               <div class="flex">
-                <div class="color">
-                  <div style="background-color: #fbd6d1"></div>
+                <div class="line">
+                  <div class="color">
+                    <div style="background-color: #fbd6d1"></div>
+                  </div>
+                  <div class="color">
+                    <div style="background-color: #000000"></div>
+                  </div>
                 </div>
-                <div class="color">
-                  <div style="background-color: #000000"></div>
-                </div>
-                <div class="color">
-                  <div style="background-color: #e5396b"></div>
-                </div>
-                <div class="color">
-                  <div style="background-color: #ff9833"></div>
+                <div class="line">
+                  <div class="color">
+                    <div style="background-color: #e5396b"></div>
+                  </div>
+                  <div class="color">
+                    <div style="background-color: #ff9833"></div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -150,7 +154,7 @@
               </div>
             </div>
             <div class="line">
-              <div class="line-1">
+              <div class="line-1 special">
                 <div class="key">Lead Time:</div>
                 <div class="value">
                   <div class="special first">
@@ -226,48 +230,53 @@ export default {
     display: flex;
     flex-direction: column;
     .product {
-      background: #e3e4e7;
       padding-top: 40px;
       > div {
         //width: 1200px;
-        margin: auto;
-        display: flex;
-        justify-content: space-between;
+        // margin: auto;
+        // display: flex;
+        // justify-content: space-between;
         .product-detail {
-          width: 626px;
+          // width: 626px;
+          margin-top: 88px;
+          padding: 0 40px;
           .product-detail-name {
+            text-align: center;
             margin-bottom: 20px;
             font-family: ArialMT;
-            font-size: 40px;
+            font-size: 50px;
             font-weight: 900;
             color: #1d1d1f;
           }
           .product-detail-context {
+            padding: 0 25px;
             margin-bottom: 76px;
+            text-align: center;
             font-family: ArialMT;
-            font-size: 17px;
-            font-weight: 900;
+            font-size: 28px;
+            font-weight: 100;
+            line-height: 30px;
             color: #1d1d1f;
           }
           .product-detail-color {
-            display: flex;
-            justify-content: space-between;
             font-family: ArialMT;
-            font-size: 16px;
+            font-size: 32px;
             font-weight: normal;
             color: #86868b;
             .flex {
               display: flex;
               flex-direction: row;
+              justify-content: space-between;
               .color {
-                background-color: #e3e4e7;
                 border-radius: 3px;
                 border: solid 1px #d6d6d6;
-                padding: 6px 44px;
-                margin-right: 8px;
+                padding: 33px 118px;
+                &:first-child {
+                  margin: 51px 0 36px;
+                }
                 > div {
-                  width: 32px;
-                  height: 32px;
+                  width: 84px;
+                  height: 84px;
                   border-radius: 50%;
                   box-shadow: inset 0px 3px 1px 0px rgba(0, 0, 0, 0.1);
                 }
@@ -276,58 +285,58 @@ export default {
           }
           .product-detail-lead-time {
             margin-top: 46px;
-            display: flex;
-            padding: 8px 0;
+            padding: 74px 0 70px;
             border-top: solid 1px #d6d6d6;
             border-bottom: solid 1px #d6d6d6;
           }
           .product-detail-lead-Customization {
             margin-top: 46px;
-            display: flex;
           }
           .submit {
-            cursor: pointer;
             margin: 71px 0 53px;
-            padding: 11px 158px;
-            width: min-content;
+            // padding: 21px 264px;
+            // width: 672px;
+            height: 70px;
+            line-height: 70px;
+            text-align: center;
             font-family: ArialMT;
-            font-size: 22px;
+            font-size: 38px;
             font-weight: normal;
             color: #ffffff;
             background: #ff4f8d;
-            border-radius: 40px;
+            border-radius: 70px;
           }
           .key {
             width: 133px;
             margin-bottom: 31px;
             font-family: ArialMT;
-            font-size: 16px;
+            font-size: 32px;
             font-weight: normal;
             color: #86868b;
             white-space: nowrap;
           }
           .value {
             white-space: nowrap;
-            padding-left: 37px;
             font-family: ArialMT;
-            font-size: 18px;
+            font-size: 26px;
             font-weight: normal;
             color: #1d1d1f;
             .special {
               display: flex;
               margin-bottom: 16px;
               &.first {
+                padding-bottom: 16px;
                 border-bottom: 1px solid #d6d6d6;
-                height: 37px;
+                // height: 37px;
               }
               > div {
                 margin-right: 88px;
               }
               .special-name {
-                width: 134px;
+                width: 195px;
               }
               .second {
-                width: 55px;
+                width: 79px;
                 &.gray {
                   color: #86868b;
                 }
@@ -339,6 +348,8 @@ export default {
     }
     .detail {
       //width: 1200px;
+      max-width: 100%;
+      padding: 173px 54px 0 37px;
       padding-top: 173px;
       margin: auto;
       .group {
@@ -346,8 +357,8 @@ export default {
         .title {
           margin-bottom: 30px;
           font-family: ArialMT;
-          font-size: 24px;
-          font-weight: normal;
+          font-size: 40px;
+          font-weight: 900;
           color: #1d1d1f;
         }
         .field {
@@ -355,7 +366,7 @@ export default {
           flex-direction: column;
           .line {
             display: flex;
-            margin-bottom: 31px;
+            flex-direction: column;
             // justify-content: space-between;
             // > div {
             //   display: flex;
@@ -364,43 +375,52 @@ export default {
             // }
             .line-1 {
               display: flex;
-              flex: 0.5;
+              margin-bottom: 39px;
+              &.special {
+                flex-direction: column;
+                .value {
+                  padding-left: 0;
+                }
+              }
             }
             .line-2 {
+              margin-bottom: 39px;
               display: flex;
-              flex: 0.5;
-              margin-left: 214px;
             }
             .key {
-              min-width: 133px;
+              // min-width: 177px;
+              flex: 0.35;
               font-family: ArialMT;
-              font-size: 16px;
+              font-size: 26px;
               font-weight: normal;
               color: #86868b;
               white-space: nowrap;
             }
             .value {
+              flex: 0.65;
               // white-space: nowrap;
               padding-left: 16px;
               font-family: ArialMT;
-              font-size: 18px;
+              font-size: 26px;
               font-weight: normal;
               color: #1d1d1f;
               .special {
                 display: flex;
                 margin-bottom: 16px;
                 &.first {
+                  margin-top: 37px;
+                  padding-bottom: 16px;
                   border-bottom: 1px solid #d6d6d6;
-                  height: 37px;
                 }
                 > div {
                   margin-right: 88px;
                 }
                 .special-name {
-                  width: 134px;
+                  width: 195px;
                 }
                 .second {
-                  width: 65px;
+                  width: 79px;
+                  white-space: nowrap;
                 }
               }
             }
