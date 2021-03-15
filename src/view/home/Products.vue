@@ -100,6 +100,11 @@ export default {
           name: this.$route.query.productId,
           path: '/Products/ProductDetail',
         }
+        this.categorie = {
+          name: this.$store.state.user.categories[0].categoryDesc,
+          path: '/Products',
+          index: 0,
+        }
       })
     } else {
       const { item, i } = this.$route.query

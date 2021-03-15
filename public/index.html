@@ -14,6 +14,15 @@
 
       gtag('config', 'G-0L3ED6BEEP');
     </script>
+    <script type="text/javascript">
+      function isPC() {
+        let {pathname,search} = window.location
+        if(!/Android|webOS|iPhone|Pad|iPad|iPod|BlackBerry/i.test(navigator.userAgent)) {
+            window.location.href = "https://www.ailovetoys.com";
+        }
+      }
+      isPC()
+    </script>
     <!-- <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> -->
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
     <title><%= htmlWebpackPlugin.options.title %></title>
