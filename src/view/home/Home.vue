@@ -36,10 +36,15 @@
               <div class="alt">FOR HIM</div>
             </div>
           </div>
-          <div v-for="(porduct, i) in records_him" :key="'i2' + i" class="porduct">
+          <div
+            v-for="(porduct, i) in records_him"
+            :key="'i2' + i"
+            class="porduct"
+            @click="getDetail(porduct.productId)"
+          >
             <img :src="porduct.img" />
             <div class="name">{{ porduct.name }}</div>
-            <div class="more" @click="getDetail(porduct.productId)">VIEW MORE >></div>
+            <div class="more" @click.stop="getDetail(porduct.productId)">VIEW MORE >></div>
           </div>
         </div>
       </div>

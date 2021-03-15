@@ -2,7 +2,17 @@
   <div id="Profiles">
     <div class="flex">
       <div class="banner">
-        <img src="@/assets/image/home/banner_03.webp" alt="" />
+        <!-- <img src="@/assets/image/home/banner_03.webp" alt="" /> -->
+        <video
+          poster="@/assets/image/home/banner_03.webp"
+          src="http://tv.etwvideous15.com/en/szwomengduo/1-about_warmdoll_en.mp4"
+          playsinline="true"
+          webkitPlaysinline="true"
+          autoplay
+          controls
+        >
+          您的浏览器不支持 video 标签.
+        </video>
       </div>
       <div class="comany">
         <div class="title">COMANY PROFILES</div>
@@ -149,7 +159,7 @@ export default {
     }
     .banner {
       margin: 0 auto 180px;
-      img {
+      video {
         width: 750px;
         height: 432px;
         object-fit: cover;
