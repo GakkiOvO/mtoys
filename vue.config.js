@@ -2,7 +2,7 @@ const PreloadWebpackPlugin = require('preload-webpack-plugin')
 const CompressionPlugin = require('compression-webpack-plugin')
 
 module.exports = {
-  outputDir: 'dist',
+  outputDir: 'mobile-dist',
   assetsDir: 'static',
   filenameHashing: true,
   lintOnSave: true,
@@ -11,7 +11,7 @@ module.exports = {
 
   chainWebpack: (config) => {
     config.plugin('html').tap((args) => {
-      args[0].title = 'Toys'
+      args[0].title = 'Wholesale Sex Toys | China professional sex toys manufacturer'
       return args
     })
 

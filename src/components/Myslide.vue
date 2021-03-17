@@ -84,6 +84,7 @@ export default {
     border: 1px solid #fff;
     transition: 0.3s ease-in-out;
     opacity: 0.7;
+    background-size: contain;
   }
 
   .thumbnails .vueperslide--active {

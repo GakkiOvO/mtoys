@@ -13,9 +13,16 @@
         </div>
         <div class="col ax-default">
           <span class="title">Useful Links</span>
-          <span>Delivey</span>
-          <span>Facebook</span>
-          <span>Whatapp</span>
+          <span
+            ><a style="color: #86868b" href="https://www.facebook.com/china.sex.products"
+              >Facebook</a
+            ></span
+          >
+          <span><a style="color: #86868b" href="https://youtu.be/cRj5Wvz8nTQ">YouTube</a></span>
+          <span
+            ><a style="color: #86868b" href="https://www.siliconwives.com/">Siliconwives</a></span
+          >
+          <span><a style="color: #86868b" href="https://www.pinkcherry.com/">Pinkcherry</a></span>
         </div>
         <div class="col ax-default">
           <span class="title">Hot Links</span>

@@ -59,7 +59,7 @@
                 </div>
               </div>
             </div>
-            <div class="submit" @click="show = true">SUBMIT</div>
+            <div class="submit" @click="show = true">ENQUIRY</div>
           </div>
         </div>
       </div>
@@ -73,8 +73,8 @@
                 <div class="value">{{ product.origin }}</div>
               </div>
               <div class="line-2">
-                <div class="key">Model Number:</div>
-                <div class="value">{{ product.modlenumber }}</div>
+                <div class="key">Packing Size:</div>
+                <div class="value">{{ product.packagingsize }}</div>
               </div>
             </div>
             <div class="line">
